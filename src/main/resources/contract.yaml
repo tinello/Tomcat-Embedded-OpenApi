@@ -1,0 +1,70 @@
+openapi: 3.0.0
+info:
+  version: 0.0.1
+  title: api
+  description: API with Tomcat embedded, OpenAPI validate.
+  contact:
+    email: api@tinello.com.ar
+
+#servers:
+  # Added by API Auto Mocking Plugin
+#  - description: SwaggerHub API Auto Mocking
+#    url: https://virtserver.swaggerhub.com/tinello/api/0.0.1
+
+security:
+  - AuthorizationHeader: [ ]
+
+paths:
+  /:
+    get:
+      operationId: service_info
+      security: [ ]
+      description: |
+        Reports the status and version.
+      tags:
+        - Info
+      responses:
+        '200':
+          description: Service info
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - name
+                  - version
+                  - healthy
+                properties:
+                  name:
+                    type: string
+                    example: API
+                  version:
+                    type: string
+                    example: 0.0.1
+                  healthy:
+                    type: boolean
+                    example: true
+        '500':
+          description: Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+
+
+components:
+  schemas:
+    Identifier:
+      type: string
+      minLength: 1
+      maxLength: 60
+      pattern: "^[a-z0-9_@.-]+$"
+
+    ErrorResponse:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
