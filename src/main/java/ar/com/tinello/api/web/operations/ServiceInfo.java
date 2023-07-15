@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import ar.com.tinello.api.core.Provider;
 import ar.com.tinello.api.web.Operation;
+import ar.com.tinello.api.web.ServerException;
 import jakarta.servlet.http.HttpServletRequest;
 
 public class ServiceInfo implements Operation {
@@ -37,7 +38,7 @@ public class ServiceInfo implements Operation {
     try {
       return objectMapper.writeValueAsString(obj);
     } catch (JsonProcessingException e) {
-      throw new RuntimeException(e);
+      throw new ServerException(e);
     }
   }
   

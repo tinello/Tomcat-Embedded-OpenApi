@@ -27,7 +27,7 @@ public class OnContainerInitializer implements ServletContainerInitializer {
       api = new OpenApi3Parser().parse(resource, false);
       
     } catch (ResolutionException | ValidationException e) {
-      throw new RuntimeException(e);
+      throw new ServerException(e);
     }
 
     ctx.setAttribute(ContextAttributes.REQUEST_VALIDATE.toString(), new RequestValidator(api));
