@@ -6,6 +6,7 @@
   "java.import.gradle.java.home": "/Users/gtinello/DEV/Tools/jdk-17.0.2.jdk/Contents/Home",
   "gradle.debug": true,
   "cSpell.words": [
+    "Hikari",
     "Servlet",
     "tinello",
     "tomcatembed"

@@ -36,6 +36,9 @@ public class ServiceInfo implements Operation {
     obj.put("healthy", true);
     
     try {
+
+      provider.getServiceInfo().execute();
+
       return objectMapper.writeValueAsString(obj);
     } catch (JsonProcessingException e) {
       throw new ServerException(e);

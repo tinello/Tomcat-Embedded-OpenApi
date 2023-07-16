@@ -34,7 +34,7 @@ public class MainServlet extends HttpServlet {
             requestValidator.validate(request);
             operationValidator = requestValidator.getValidator(request);
         } catch (ValidationException e) {
-            pw.println("{\"message\":\"" + e.getMessage() + "\"}");
+            pw.println("{\"message\":\"" + e.getMessage().replaceAll("\"", "").replaceAll("\r", "").replaceAll("\n", "") + "\"}");
             pw.flush();
             pw.close();
             return;
@@ -49,7 +49,7 @@ public class MainServlet extends HttpServlet {
             resp.setStatus(HttpServletResponse.SC_OK);
         } catch (Exception e) {
             e.printStackTrace();
-            body = "{\"message\":\"" + e.getMessage() + "\"}";
+            body = "{\"message\":\"" + e.getMessage().replaceAll("\"", "").replaceAll("\r", "").replaceAll("\n", "") + "\"}";
         }
 
         pw.println(body);
