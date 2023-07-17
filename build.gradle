@@ -9,12 +9,21 @@
 plugins {
     id 'java'
     id 'application'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
 group 'ar.com.tinello.tomcatembed'
 version '1.0.0'
 
-sourceCompatibility = 17
+java {
+    sourceCompatibility = JavaVersion.VERSION_20
+    targetCompatibility = JavaVersion.VERSION_20
+
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(20)
+        implementation = JvmImplementation.J9
+    }
+}
 
 apply plugin: 'java'
 
