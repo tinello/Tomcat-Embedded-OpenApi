@@ -12,7 +12,6 @@ public class Provider {
   private final DataSource ds;
   private final GetServiceInfo getServiceInfo;
 
-
   public Provider() {
     ds = getDataSource();
     getServiceInfo = new GetServiceInfo(ds);
@@ -22,18 +21,7 @@ public class Provider {
     return getServiceInfo;
   }
 
-
   private DataSource getDataSource() {
-
-    /*
-    final var props = new Properties();
-    props.setProperty("dataSourceClassName", "org.postgresql.ds.PGSimpleDataSource");
-    props.setProperty("dataSource.user", "sso");
-    props.setProperty("dataSource.password", "postgres");
-    props.setProperty("dataSource.databaseName", "hcv_sso");
-    props.put("dataSource.logWriter", new PrintWriter(System.out));
-    */
-
     final var config = new HikariConfig();
     config.setDataSourceClassName("org.postgresql.ds.PGSimpleDataSource");
     config.addDataSourceProperty("serverName", "localhost");
