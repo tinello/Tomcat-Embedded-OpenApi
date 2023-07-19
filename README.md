@@ -2,7 +2,7 @@
 
 ## Requirements <a name="Requirements"></a>
 ### Software: <a name="Software"></a>
-- Java 17
+- OpenJDK 20 with OpenJ9 -> https://developer.ibm.com/languages/java/semeru-runtimes/downloads/
 
 ### Environment variables: <a name="EnvironmentVariables"></a>
 - N/A

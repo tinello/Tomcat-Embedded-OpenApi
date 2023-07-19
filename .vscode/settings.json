@@ -1,12 +1,10 @@
 {
   "java.configuration.updateBuildConfiguration": "automatic",
-  "java.configuration.runtimes": [
-    {"path": "/Users/gtinello/DEV/Tools/jdk-20.0.1+9/Contents/Home", "name": "JavaSE-20"}
-  ],
-  "java.import.gradle.java.home": "/Users/gtinello/DEV/Tools/jdk-20.0.1+9/Contents/Home",
   "gradle.debug": true,
   "cSpell.words": [
+    "assertj",
     "Hikari",
+    "jdbc",
     "Servlet",
     "tinello",
     "tomcatembed"

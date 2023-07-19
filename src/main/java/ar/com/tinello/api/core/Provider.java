@@ -11,9 +11,9 @@ public class Provider {
 
   private final DataSource ds;
   private final GetServiceInfo getServiceInfo;
-
-  public Provider() {
-    ds = getDataSource();
+  
+  public Provider(Environment environment) {
+    ds = getDataSource(environment.getDbUrl(), environment.getDbUser(), environment.getDbPass());
     getServiceInfo = new GetServiceInfo(ds);
   }
   
@@ -21,15 +21,15 @@ public class Provider {
     return getServiceInfo;
   }
 
-  private DataSource getDataSource() {
+  private DataSource getDataSource(String dbUrl, String dbUser, String dbPass) {
     final var config = new HikariConfig();
-    config.setDataSourceClassName("org.postgresql.ds.PGSimpleDataSource");
-    config.addDataSourceProperty("serverName", "localhost");
-    config.addDataSourceProperty("portNumber", "5433");
-    config.addDataSourceProperty("databaseName", "hcv_sso");
-    config.addDataSourceProperty("user", "sso");
-    config.addDataSourceProperty("password", "postgres");
-
+    config.setDriverClassName("org.postgresql.ds.PGSimpleDataSource");
+    config.setJdbcUrl("jdbc:postgresql://" + dbUrl);
+    config.setUsername(dbUser);
+    config.setPassword(dbPass);
+    config.setMaximumPoolSize(20);
+    config.setMinimumIdle(1);
+    
     return new HikariDataSource(config);
   }
 }
