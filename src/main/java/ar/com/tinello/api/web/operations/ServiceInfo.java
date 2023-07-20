@@ -31,13 +31,15 @@ public class ServiceInfo implements Operation {
 
 
     final var obj = objectMapper.createObjectNode();
-    obj.put("name", "API");
-    obj.put("version", "0.0.1");
-    obj.put("healthy", true);
+    
     
     try {
 
-      provider.getServiceInfo().execute();
+      final var response = provider.getServiceInfo().execute();
+
+      obj.put("name", response.getApiName());
+      obj.put("version", response.getApiVersion());
+      obj.put("healthy", response.getApiHealthy());
 
       return objectMapper.writeValueAsString(obj);
     } catch (JsonProcessingException e) {

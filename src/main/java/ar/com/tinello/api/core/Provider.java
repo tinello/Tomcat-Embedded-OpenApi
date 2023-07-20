@@ -5,16 +5,18 @@ import javax.sql.DataSource;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
-import ar.com.tinello.api.core.actions.GetServiceInfo;
+import ar.com.tinello.api.core.info.actions.GetServiceInfo;
+import ar.com.tinello.api.core.info.infrastructure.ServiceInfoRepoPostgres;
+import ar.com.tinello.api.core.infrastructure.sql.SqlClient;
 
 public class Provider {
 
-  private final DataSource ds;
   private final GetServiceInfo getServiceInfo;
   
   public Provider(Environment environment) {
-    ds = getDataSource(environment.getDbUrl(), environment.getDbUser(), environment.getDbPass());
-    getServiceInfo = new GetServiceInfo(ds);
+    final var ds = getDataSource(environment.getDbUrl(), environment.getDbUser(), environment.getDbPass());
+    final var sqlClient = new SqlClient(ds);
+    getServiceInfo = new GetServiceInfo(new ServiceInfoRepoPostgres(sqlClient));
   }
   
   public GetServiceInfo getServiceInfo() {
