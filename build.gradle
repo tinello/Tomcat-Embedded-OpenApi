@@ -43,8 +43,8 @@ dependencies {
     implementation group: 'com.zaxxer', name: 'HikariCP', version: '5.0.1'
     implementation group: 'org.postgresql', name: 'postgresql', version: '42.6.0'
 
-    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.15.0'
-    testImplementation 'junit:junit:4.13'
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.24.2'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.9.3'
 }
 
 application {
