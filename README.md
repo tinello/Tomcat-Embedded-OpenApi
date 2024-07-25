@@ -3,14 +3,30 @@
 ## Requirements <a name="Requirements"></a>
 ### Software: <a name="Software"></a>
 - OpenJDK 20 with OpenJ9 -> https://developer.ibm.com/languages/java/semeru-runtimes/downloads/
+- Docker 4.28.0 -> https://docs.docker.com/desktop/install/ubuntu/
+
+### Configure JDK VSCode: <a name="ConfigureJDKvscode"></a>
+
+Change /.vscode/launch.json for your Java Home
+
+### Configure JDK Gradle: <a name="ConfigureJDKgradle"></a>
+
+Change gradle.properties for your Java Home
 
 ### Environment variables: <a name="EnvironmentVariables"></a>
-- N/A
+- DB_URL=localhost:5432/postgres
+- DB_USER=postgres
+- DB_PASS=mysecretpassword
+
+### Start PostgreSQL <a name="StartPostgreSQL"></a>
+```bash
+docker run --name tomcat-openapi-postgres -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword -d postgres:16.3-alpine3.18
+```
 
 
 ### Start application <a name="StartApplication"></a>
 ```bash
-./gradlew run
+DB_URL="localhost:5432/postgres" DB_USER=postgres DB_PASS=mysecretpassword ./gradlew run
 ```
 
 ## Development <a name="development"></a>

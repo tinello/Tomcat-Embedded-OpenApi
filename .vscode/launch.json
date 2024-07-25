@@ -15,11 +15,11 @@
       "name": "Main",
       "request": "launch",
       "mainClass": "ar.com.tinello.api.web.Main",
-      "projectName": "tomcat-embed",
+      "projectName": "Tomcat-Embedded-OpenApi",
       "env": {
-        "DB_URL": "localhost:5433/hcv_rugby",
-        "DB_USER": "sso",
-        "DB_PASS": "postgres"
+        "DB_URL": "localhost:5432/postgres",
+        "DB_USER": "postgres",
+        "DB_PASS": "mysecretpassword"
       }
     }
   ]
