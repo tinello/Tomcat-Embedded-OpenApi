@@ -8,5 +8,12 @@
     "Servlet",
     "tinello",
     "tomcatembed"
-  ]
+  ],
+  "java.configuration.runtimes": [
+    {
+      "name": "JavaSE-21",
+      "path": "/home/g/DEV/Tools/jdk-21.0.2+13"
+    }
+  ],
+  "java.jdt.ls.java.home": "/home/g/DEV/Tools/jdk-21.0.2+13"
 }

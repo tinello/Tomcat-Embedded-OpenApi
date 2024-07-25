@@ -16,11 +16,11 @@ group 'ar.com.tinello.tomcatembed'
 version '1.0.0'
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_20
-    targetCompatibility = JavaVersion.VERSION_20
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 
     toolchain {
-        languageVersion = JavaLanguageVersion.of(20)
+        languageVersion = JavaLanguageVersion.of(21)
         implementation = JvmImplementation.J9
     }
 }
@@ -32,7 +32,7 @@ repositories {
 }
 
 dependencies {
-    implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '10.1.11'
+    implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-core', version: '10.1.26'
     implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-logging-juli', version: '8.5.2'
     implementation group: 'javax.servlet', name: 'javax.servlet-api', version: '4.0.1'
 
@@ -40,11 +40,11 @@ dependencies {
     implementation group: 'org.openapi4j', name: 'openapi-operation-validator', version: '1.0.7'
     implementation group: 'org.openapi4j', name: 'openapi-operation-servlet', version: '1.0.7'
     
-    implementation group: 'com.zaxxer', name: 'HikariCP', version: '5.0.1'
-    implementation group: 'org.postgresql', name: 'postgresql', version: '42.6.0'
+    implementation group: 'com.zaxxer', name: 'HikariCP', version: '5.1.0'
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.7.3'
 
-    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.24.2'
-    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.9.3'
+    testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.26.3'
+    testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.10.3'
 }
 
 application {
