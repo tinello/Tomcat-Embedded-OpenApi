@@ -45,3 +45,18 @@ Install "Gradle Extension Pack" from Richard Willis https://marketplace.visualst
 | Name                 | Endpoint                                                             |
 | -------------------- | -------------------------------------------------------------------- |
 | Service Info         | http://localhost:8080/                                               |
+
+
+## Observability <a name="observability"></a>
+
+### Start Docker Grafana OTEL <a name="start-docker-grafana-otel"></a>
+
+```bash
+docker run --restart unless-stopped --detach --publish 3000:3000 --publish 4317:4317 --publish 4318:4318 --name grafana_otel grafana/otel-lgtm:0.9.1
+```
+
+Ref: https://hub.docker.com/r/grafana/otel-lgtm
+
+### View Grafana <a name="view-grafana"></a>
+
+Log in to http://localhost:3000 with user admin and password admin.

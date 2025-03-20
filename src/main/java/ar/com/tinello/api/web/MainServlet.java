@@ -8,6 +8,10 @@ import org.openapi4j.operation.validator.validation.OperationValidator;
 import org.openapi4j.operation.validator.validation.RequestValidator;
 
 import ar.com.tinello.api.core.Provider;
+import io.opentelemetry.api.trace.Span;
+import io.opentelemetry.api.trace.SpanContext;
+import io.opentelemetry.api.trace.Tracer;
+import io.opentelemetry.context.Context;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -38,6 +42,13 @@ public class MainServlet extends HttpServlet {
 
 
     private void processRequest(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+
+        final var tracer = (Tracer)req.getAttribute(RequestAttributes.TRACER.name());
+        final var spanContextParent = (SpanContext)req.getAttribute(RequestAttributes.SPAN_CONTEXT_PARENT.name());
+        final var span = tracer.spanBuilder("ProcessRequest")
+            .setParent(Context.current().with(Span.wrap(spanContextParent)))
+            .startSpan();        
+
         final var pw = resp.getWriter();
         resp.setContentType("application/json");
 
@@ -56,15 +67,19 @@ public class MainServlet extends HttpServlet {
             pw.println("{\"message\":\"" + e.getMessage().replaceAll("\"", "").replaceAll("\r", "").replaceAll("\n", "") + "\"}");
             pw.flush();
             pw.close();
+
+            span.setAttribute("OperationValidationException", e.getMessage());
+            span.end();
             return;
         }
 
         final var operation = operationValidator.getOperation();
         final var op = operations.get(operation.getOperationId());
+        span.setAttribute("Operation", operation.getOperationId());
 
         String body;
         try {
-            body = op.execute(req, provider);
+            body = op.execute(req, provider, tracer, span.getSpanContext());
             resp.setStatus(HttpServletResponse.SC_OK);
         } catch (Exception e) {
             e.printStackTrace();
@@ -74,5 +89,6 @@ public class MainServlet extends HttpServlet {
         pw.println(body);
         pw.flush();
         pw.close();
+        span.end();
     }
 }

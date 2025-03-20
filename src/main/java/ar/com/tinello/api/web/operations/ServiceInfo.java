@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import ar.com.tinello.api.core.Provider;
 import ar.com.tinello.api.web.Operation;
 import ar.com.tinello.api.web.ServerException;
+import io.opentelemetry.api.trace.SpanContext;
+import io.opentelemetry.api.trace.Tracer;
 import jakarta.servlet.http.HttpServletRequest;
 
 public class ServiceInfo implements Operation {
@@ -16,7 +18,7 @@ public class ServiceInfo implements Operation {
   }
 
   @Override
-  public String execute(HttpServletRequest req, Provider provider) {
+  public String execute(HttpServletRequest req, Provider provider, Tracer tracer, SpanContext spanContextParent) {
 
     ObjectMapper objectMapper = new ObjectMapper();
 
@@ -35,7 +37,7 @@ public class ServiceInfo implements Operation {
     
     try {
 
-      final var response = provider.getServiceInfo().execute();
+      final var response = provider.getServiceInfo().execute(tracer, spanContextParent);
 
       obj.put("name", response.getApiName());
       obj.put("version", response.getApiVersion());

@@ -21,6 +21,14 @@ public class Environment {
     return env;
   }
 
+  public String getEnv(String name, String defaultValue) {
+    try {
+      return getEnvRequired(name);
+    } catch (Exception e) {
+      return defaultValue;
+    }
+  }
+
   public String getDbUrl() {
     return this.dbUrl;
   }
@@ -31,6 +39,22 @@ public class Environment {
 
   public String getDbPass() {
     return this.dbPass;
+  }
+
+  public String getOtelServiceName() {
+    try {
+      return getEnvRequired("OTEL_SERVICE_NAME");
+    } catch (Exception e) {
+      return "tomcat-api";
+    }
+  }
+
+  public String getOtelGrpcEndpoint() {
+    try {
+      return getEnvRequired("OTEL_GRPC_ENDPOINT");
+    } catch (Exception e) {
+      return "http://localhost:4317";
+    }
   }
 }
 

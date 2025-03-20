@@ -2,6 +2,8 @@ package ar.com.tinello.api.core.info.actions;
 
 import ar.com.tinello.api.core.info.domain.ServiceInfo;
 import ar.com.tinello.api.core.info.domain.ServiceInfoRepo;
+import io.opentelemetry.api.trace.SpanContext;
+import io.opentelemetry.api.trace.Tracer;
 
 public class GetServiceInfo {
   
@@ -11,8 +13,8 @@ public class GetServiceInfo {
     this.repo = repo;
   }
 
-  public ServiceInfo execute() {
-    return repo.get();
+  public ServiceInfo execute(Tracer tracer, SpanContext spanContextParent) {
+    return repo.get(tracer, spanContextParent);
   }
 
 }
