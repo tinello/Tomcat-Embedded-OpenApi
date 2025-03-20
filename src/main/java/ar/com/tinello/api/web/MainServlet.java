@@ -54,6 +54,7 @@ public class MainServlet extends HttpServlet {
 
         final var requestValidator = (RequestValidator) req.getServletContext().getAttribute(ContextAttributes.REQUEST_VALIDATE.toString());
         final var provider = (Provider) req.getServletContext().getAttribute(ContextAttributes.PROVIDER.toString());
+        @SuppressWarnings("unchecked")
         final var operations = (Map<String, Operation>) req.getServletContext().getAttribute(ContextAttributes.OPERATIONS.toString());
 
         final var request = ServletRequest.of(req);
