@@ -52,7 +52,7 @@ Install "Gradle Extension Pack" from Richard Willis https://marketplace.visualst
 ### Start Docker Grafana OTEL <a name="start-docker-grafana-otel"></a>
 
 ```bash
-docker run --restart unless-stopped --detach --publish 3000:3000 --publish 4317:4317 --publish 4318:4318 --name grafana_otel grafana/otel-lgtm:0.9.1
+docker run --restart unless-stopped --detach --publish 3000:3000 --publish 4317:4317 --publish 4318:4318 --name grafana_otel grafana/otel-lgtm:0.11.0
 ```
 
 Ref: https://hub.docker.com/r/grafana/otel-lgtm
