@@ -43,6 +43,10 @@ public class ServiceInfo implements Operation {
       obj.put("version", response.getApiVersion());
       obj.put("healthy", response.getApiHealthy());
 
+      boolean isVirtual = Thread.currentThread().isVirtual();
+      obj.put("isVirtual", isVirtual);
+
+
       return objectMapper.writeValueAsString(obj);
     } catch (JsonProcessingException e) {
       throw new ServerException(e);

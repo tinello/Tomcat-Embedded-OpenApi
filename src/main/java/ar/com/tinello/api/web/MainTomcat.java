@@ -1,6 +1,7 @@
 package ar.com.tinello.api.web;
 
 import java.io.File;
+import java.util.concurrent.Executors;
 
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.connector.Connector;
@@ -18,6 +19,9 @@ public class MainTomcat {
     tomcat.setBaseDir("temp");
     final var conn = new Connector();
     conn.setPort(8080);
+    conn.setProperty("executor", "virtualThreadExecutor");
+    conn.getProtocolHandler().setExecutor(Executors.newVirtualThreadPerTaskExecutor());
+
     tomcat.setConnector(conn);
 
     final var contextPath = "/";
