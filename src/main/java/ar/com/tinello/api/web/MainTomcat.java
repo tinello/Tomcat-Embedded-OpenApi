@@ -35,8 +35,8 @@ public class MainTomcat {
       ctx.setManager(manager);
     }
 
-    if (manager instanceof StandardManager) {
-      ((StandardManager) manager).setPathname("");
+    if (manager instanceof StandardManager standardManager) {
+      standardManager.setPathname("");
     }
 
     final var servletName = "mainServlet";
