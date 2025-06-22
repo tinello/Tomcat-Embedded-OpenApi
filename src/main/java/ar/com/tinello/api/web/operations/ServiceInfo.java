@@ -20,18 +20,7 @@ public class ServiceInfo implements Operation {
   @Override
   public String execute(HttpServletRequest req, Provider provider, Tracer tracer, SpanContext spanContextParent) {
 
-    ObjectMapper objectMapper = new ObjectMapper();
-
-    /*
-    final var obj = objectMapper.createObjectNode();
-    final var arr = objectMapper.createArrayNode();
-    arr.add(objectMapper.createObjectNode().put("a", "aa").put("b", "bb"));
-    
-    obj.set("c", arr);
-    obj.put("d", "dd");
-    */
-
-
+    final var objectMapper = new ObjectMapper();
     final var obj = objectMapper.createObjectNode();
     
     
