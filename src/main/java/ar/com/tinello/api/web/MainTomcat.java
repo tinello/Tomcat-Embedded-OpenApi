@@ -9,6 +9,7 @@ import org.apache.catalina.session.StandardManager;
 import org.apache.catalina.startup.Tomcat;
 import org.apache.tomcat.util.descriptor.web.FilterDef;
 import org.apache.tomcat.util.descriptor.web.FilterMap;
+import org.apache.tomcat.util.scan.StandardJarScanner;
 
 public class MainTomcat {
 
@@ -38,6 +39,14 @@ public class MainTomcat {
     if (manager instanceof StandardManager standardManager) {
       standardManager.setPathname("");
     }
+
+    StandardJarScanner jarScanner = new StandardJarScanner();
+    jarScanner.setScanAllDirectories(false);
+    jarScanner.setScanAllFiles(false);
+    jarScanner.setScanClassPath(false);
+    jarScanner.setScanBootstrapClassPath(false);
+    jarScanner.setScanManifest(false);
+    ctx.setJarScanner(jarScanner);
 
     final var servletName = "mainServlet";
     Tomcat.addServlet(ctx, servletName, new MainServlet());
