@@ -67,12 +67,6 @@
   		<groupId>io.opentelemetry</groupId>
   		<artifactId>opentelemetry-exporter-otlp</artifactId>
   		<version>1.51.0</version>
-        <exclusions>
-            <exclusion>
-                <groupId>io.opentelemetry</groupId>
-                <artifactId>opentelemetry-exporter-sender-okhttp</artifactId>
-            </exclusion>
-        </exclusions>
   	</dependency>
 
 
