@@ -2,16 +2,13 @@
 
 ## Requirements <a name="Requirements"></a>
 ### Software: <a name="Software"></a>
-- OpenJDK 20 with OpenJ9 -> https://developer.ibm.com/languages/java/semeru-runtimes/downloads/
+- OpenJDK 23 with OpenJ9 -> https://developer.ibm.com/languages/java/semeru-runtimes/downloads/
 - Docker 4.28.0 -> https://docs.docker.com/desktop/install/ubuntu/
 
 ### Configure JDK VSCode: <a name="ConfigureJDKvscode"></a>
 
 Change /.vscode/launch.json for your Java Home
 
-### Configure JDK Gradle: <a name="ConfigureJDKgradle"></a>
-
-Change gradle.properties for your Java Home
 
 ### Environment variables: <a name="EnvironmentVariables"></a>
 - DB_URL=localhost:5432/postgres
@@ -24,15 +21,15 @@ docker run --name tomcat-openapi-postgres -p 5432:5432 -e POSTGRES_PASSWORD=myse
 ```
 
 
-### Start application Gradle <a name="StartApplicationGradle"></a>
+### Start application Maven <a name="StartApplicationMaven"></a>
 ```bash
-DB_URL="localhost:5432/postgres" DB_USER=postgres DB_PASS=mysecretpassword ./gradlew run
+DB_URL="localhost:5432/postgres" DB_USER=postgres DB_PASS=mysecretpassword JAVA_HOME=/home/g/DEV/Tools/jdk-23.0.2+7 ./mvnw clean compile exec:java -Prun
 ```
 
 
 ### Start application Java <a name="StartApplicationJava"></a>
 ```bash
-DB_URL="localhost:5432/postgres" DB_USER=postgres DB_PASS=mysecretpassword /home/g/DEV/Tools/jdk-23.0.2+7/bin/java -XX:+TieredStopAtLevel=1 -jar tomcat-embed-1.0.0-all.jar
+DB_URL="localhost:5432/postgres" DB_USER=postgres DB_PASS=mysecretpassword /home/g/DEV/Tools/jdk-23.0.2+7/bin/java -XX:+TieredStopAtLevel=1 -jar tomcatembed-1.1.0-jar-with-dependencies.jar
 ```
 
 
