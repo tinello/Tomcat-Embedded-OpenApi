@@ -1,20 +1,20 @@
 {
-  // Use IntelliSense to learn about possible attributes.
-  // Hover to view descriptions of existing attributes.
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "type": "java",
-      "name": "Main",
-      "request": "launch",
-      "mainClass": "ar.com.tinello.api.web.Main",
-      "projectName": "Tomcat-Embedded-OpenApi",
-      "env": {
-        "DB_URL": "localhost:5432/postgres",
-        "DB_USER": "postgres",
-        "DB_PASS": "mysecretpassword"
-      }
-    }
-  ]
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "ar.com.tinello.api.web.Main",
+            "projectName": "tomcat-embed-Tomcat-Embedded-OpenApi",
+            "env": {
+                "DB_URL": "localhost:5432/postgres",
+                "DB_USER": "postgres",
+                "DB_PASS": "mysecretpassword"
+            }
+        }
+    ]
 }
