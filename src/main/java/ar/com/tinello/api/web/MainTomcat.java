@@ -21,6 +21,8 @@ public class MainTomcat {
     final var conn = new Connector();
     conn.setPort(8080);
     conn.setProperty("executor", "virtualThreadExecutor");
+    conn.setProperty("maxThreads", "50");
+    conn.setProperty("minSpareThreads", "5");
     conn.getProtocolHandler().setExecutor(Executors.newVirtualThreadPerTaskExecutor());
 
     tomcat.setConnector(conn);
@@ -28,7 +30,8 @@ public class MainTomcat {
     final var contextPath = "/";
     final var docBase = new File(".").getAbsolutePath();
     final var ctx = tomcat.addContext(contextPath, docBase);
-
+    tomcat.setAddDefaultWebXmlToWebapp(false);
+    
     var manager = ctx.getManager();
 
     if (manager == null) {
