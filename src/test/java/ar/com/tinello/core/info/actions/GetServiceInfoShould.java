@@ -9,7 +9,7 @@ import ar.com.tinello.core.info.infrastructure.TracerMock;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class GetServiceInfoShould {
+class GetServiceInfoShould {
 
   @Test
   void return_service_info_successful() {

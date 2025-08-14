@@ -7,7 +7,6 @@ public class TracerMock implements Tracer  {
 
     @Override
     public SpanBuilder spanBuilder(String spanName) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'spanBuilder'");
     }
     
