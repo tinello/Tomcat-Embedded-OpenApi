@@ -9,7 +9,7 @@
             "name": "Main",
             "request": "launch",
             "mainClass": "ar.com.tinello.api.web.Main",
-            "projectName": "tomcat-embed-Tomcat-Embedded-OpenApi",
+            "projectName": "tomcatembed",
             "env": {
                 "DB_URL": "localhost:5432/postgres",
                 "DB_USER": "postgres",

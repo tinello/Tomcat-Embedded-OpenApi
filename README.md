@@ -21,15 +21,26 @@ docker run --name tomcat-openapi-postgres -p 5432:5432 -e POSTGRES_PASSWORD=myse
 ```
 
 
-### Start application Maven <a name="StartApplicationMaven"></a>
+### Start application Maven (not found) <a name="StartApplicationMaven"></a>
 ```bash
 DB_URL="localhost:5432/postgres" DB_USER=postgres DB_PASS=mysecretpassword JAVA_HOME=/home/g/DEV/Tools/jdk-23.0.2+7 ./mvnw clean compile exec:java -Prun
+```
+
+### Build application Maven <a name="BuildApplicationMaven"></a>
+```bash
+JAVA_HOME=/home/g/DEV/Tools/jdk-23.0.2+7 ./mvnw clean package -DskipTests
 ```
 
 
 ### Start application Java <a name="StartApplicationJava"></a>
 ```bash
-DB_URL="localhost:5432/postgres" DB_USER=postgres DB_PASS=mysecretpassword /home/g/DEV/Tools/jdk-23.0.2+7/bin/java -XX:+TieredStopAtLevel=1 -jar tomcatembed-1.1.0-jar-with-dependencies.jar
+DB_URL="localhost:5432/postgres" DB_USER=postgres DB_PASS=mysecretpassword /home/g/DEV/Tools/jdk-23.0.2+7/bin/java -XX:+TieredStopAtLevel=1 -jar tomcatembed-1.1.0.jar
+```
+
+
+### OWASP Dependencies Check <a name="OWASPDependenciesCheck"></a>
+```bash
+JAVA_HOME=/home/g/DEV/Tools/jdk-23.0.2+7 mvn clean verify -DskipTests=true -Ddependency.check.skip=false -Dmaven.clean.skip=true -Dmaven.compile.skip=true -Dmaven.install.skip=true
 ```
 
 
@@ -38,10 +49,6 @@ DB_URL="localhost:5432/postgres" DB_USER=postgres DB_PASS=mysecretpassword /home
 #### Extension Pack for Java
 
 Install "Extension Pack for Java" from Microsoft: https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack
-
-#### Gradle Extension Pack
-
-Install "Gradle Extension Pack" from Richard Willis https://marketplace.visualstudio.com/items?itemName=richardwillis.vscode-gradle-extension-pack
 
 
 ## Endpoints
