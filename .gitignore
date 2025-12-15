@@ -6,3 +6,4 @@ build
 bin
 temp
 target
+dependency-reduced-pom.xml
