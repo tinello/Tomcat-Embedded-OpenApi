@@ -28,7 +28,7 @@ public class Provider {
   
     private DataSource getDataSource(String dbUrl, String dbUser, String dbPass) {
     final var config = new HikariConfig();
-    config.setDriverClassName("org.postgresql.ds.PGSimpleDataSource");
+    config.setDriverClassName("org.postgresql.Driver");
     config.setJdbcUrl("jdbc:postgresql://" + dbUrl);
     config.setUsername(dbUser);
     config.setPassword(dbPass);
